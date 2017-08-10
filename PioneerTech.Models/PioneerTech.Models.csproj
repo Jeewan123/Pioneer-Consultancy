@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{538F19C9-1B74-45A7-BC2A-CD57E2997AD8}</ProjectGuid>
+    <ProjectGuid>{EDBF178D-BBEF-4260-A7B9-2732BCB2E159}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PioneerConsultancy.DAL</RootNamespace>
-    <AssemblyName>PioneerConsultancy.DAL</AssemblyName>
+    <RootNamespace>PioneerTech.Models</RootNamespace>
+    <AssemblyName>PioneerTech.Models</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,9 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PioneerTech.Models">
-      <HintPath>..\PioneerTech.Models\bin\Release\PioneerTech.Models.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,8 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EmployeeDataAccessLayer.cs" />
+    <Compile Include="CompanyModel\CompanyModel.cs" />
+    <Compile Include="EmployeeModel\EmployeeModel.cs" />
+    <Compile Include="ProjectModel\ProjectModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PioneerConsultancy.DAL\PioneerConsultancy.DAL.csproj">
+      <Project>{538f19c9-1b74-45a7-bc2a-cd57e2997ad8}</Project>
+      <Name>PioneerConsultancy.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

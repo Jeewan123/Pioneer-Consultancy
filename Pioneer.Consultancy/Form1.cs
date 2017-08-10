@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PioneerConsultancy.DAL;
-
+using PioneerTech.Models;
 
 namespace Pioneer.Consultancy
 {
@@ -32,14 +32,21 @@ namespace Pioneer.Consultancy
 
         private void companyDetailsSaveButton_Click(object sender, EventArgs e)
         {
-            var employerName = employerNameTextBox.Text;
-            var contactNumber = Convert.ToInt32(contactNumberTextBox.Text);
-            var location = locationTextBox.Text;
-            var website = websiteTextBox.Text;
-            var employeeId = Convert.ToInt32(textBox2.Text);
+
+
+            CompanyModel myCompany = new CompanyModel()
+            {
+                employerName = employerNameTextBox.Text,
+                contactNumber = Convert.ToInt32(contactNumberTextBox.Text),
+                location = locationTextBox.Text,
+                website = websiteTextBox.Text,
+                employeeId = Convert.ToInt32(textBox2.Text)
+            };
+
+
 
             EmployeeDataAccessLayer myCompanyDal = new EmployeeDataAccessLayer();
-            int result = myCompanyDal.TakeCompanyDetail(employerName, contactNumber, location, website, employeeId);
+            int result = myCompanyDal.TakeCompanyDetail(myCompany);
 
             if (result > 0)
             {
@@ -50,17 +57,6 @@ namespace Pioneer.Consultancy
                 MessageBox.Show("Not done");
             }
 
-
-            //Creating Sql Database Connection
-            SqlConnection mysqlconnection = new SqlConnection();
-            mysqlconnection.ConnectionString = "Data Source = DESKTOP-1246094;" +
-                                               "database = PioneerDataBase1;Integrated security = SSPI";
-
-
-            SqlCommand cmd = new SqlCommand("INSERT INTO CompanyDetail VALUES(" + "'" + employerName + "'," + contactNumber + ",'" + location + "','" + website + "'," + employeeId + ")", mysqlconnection);
-            //Opening Sql Database Connection
-            mysqlconnection.Open();
-            SqlDataReader Dr = cmd.ExecuteReader();
 
             
 
@@ -73,21 +69,32 @@ namespace Pioneer.Consultancy
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            
-            
-                string firstName = firstNameTextBox.Text;
-                string lastName = lastNameTextBox.Text;
-                string emailId = emailIDTextBox.Text;
-                var phoneNumber = Convert.ToInt64(phoneNumberTextBox.Text);
-                var alternatePhoneNumber = Convert.ToInt64(alternatePhoneTextBox.Text);
-                string address1 = address1TextBox.Text;
-                string address2 = address2TextBox.Text;
-                string homeCountry = homeCountryTextBox.Text;
-                string currentCountry = currentCountryTextBox.Text;
-                var zipCode = Convert.ToInt32(zipcodeTextBox.Text);
+            EmployeeModel myEmployee = new EmployeeModel
+            {
+                firstName= firstNameTextBox.Text,
+                lastName = lastNameTextBox.Text,
+                emailId = emailIDTextBox.Text,
+                phoneNumber = Convert.ToInt64(phoneNumberTextBox.Text),
+                alternatePhoneNumber = Convert.ToInt64(alternatePhoneTextBox.Text),
+                address1 = address1TextBox.Text,
+                address2 = address2TextBox.Text,
+                homeCountry = homeCountryTextBox.Text,
+                currentCountry = currentCountryTextBox.Text,
+                zipCode = Convert.ToInt32(zipcodeTextBox.Text)
+            };
+
+
+
+
+
+
+
+
+
+
 
             EmployeeDataAccessLayer myempdataal = new EmployeeDataAccessLayer();
-            int result = myempdataal.TakeEmployeeName(firstName, lastName, emailId, phoneNumber, alternatePhoneNumber, address1, address2, homeCountry, currentCountry, zipCode );
+            int result = myempdataal.TakeEmployeeName(myEmployee) ;
             if (result > 0)
             {
                 MessageBox.Show("done");
@@ -98,19 +105,7 @@ namespace Pioneer.Consultancy
             }
 
 
-            //Creating Sql Database Connection
-            SqlConnection mysqlconnection = new SqlConnection();
-            mysqlconnection.ConnectionString = "Data Source = DESKTOP-1246094;" +
-                                               "database = PioneerDataBase1;Integrated security = SSPI";
-
-
-            SqlCommand cmd = new SqlCommand("INSERT INTO EmployeeDetail VALUES(" +
-                                            "'" + firstName + "','" + lastName + "','" + emailId + "'," +
-                                            phoneNumber + "," + alternatePhoneNumber + ",'" + address1 + "','" + address2 +
-                                            "','" + homeCountry + "','" + currentCountry + "'," + zipCode + ")", mysqlconnection);
-            //Opening Sql Database Connection
-            mysqlconnection.Open();
-            SqlDataReader Dr = cmd.ExecuteReader();
+           
 
 
 
@@ -202,14 +197,18 @@ namespace Pioneer.Consultancy
 
         private void projectDetailsSaveButton_Click(object sender, EventArgs e)
         {
-            string projectName = projectNameTextBox.Text;
-            string clientName = clientNameTextBox.Text;
-            string location = projectLocationTextBox.Text;
-            string roles = rolesTextBox.Text;
-            var employeeId = Convert.ToInt32(employeeIdTextBox.Text);
+            ProjectModel myProject = new ProjectModel()
+            {
+                projectName = projectNameTextBox.Text,
+                clientName = clientNameTextBox.Text,
+                location = projectLocationTextBox.Text,
+                roles = rolesTextBox.Text,
+                employeeId = Convert.ToInt32(employeeIdTextBox.Text)
+            };
 
+            
             EmployeeDataAccessLayer myProjectDal = new EmployeeDataAccessLayer();
-            int result = myProjectDal.TakeProjectDetail(projectName, clientName, location, roles, employeeId);
+            int result = myProjectDal.TakeProjectDetail(myProject);
             if (result > 0)
             {
                 MessageBox.Show("Done");
@@ -220,16 +219,7 @@ namespace Pioneer.Consultancy
             }
 
 
-            SqlConnection mysqlconnection = new SqlConnection();
-            mysqlconnection.ConnectionString = "Data Source = DESKTOP-1246094;" +
-                                               "database = PioneerDataBase1;Integrated security = SSPI";
-
-
-            SqlCommand cmd = new SqlCommand("INSERT INTO ProjectDetail VALUES(" + "'" + projectName + "','" + clientName + "','" + location + "','" + roles +"'," + employeeId + ")", mysqlconnection);
-            //Opening Sql Database Connection
-            mysqlconnection.Open();
-            SqlDataReader Dr = cmd.ExecuteReader();
-            mysqlconnection.Close();
+            
         }
 
         private void projectNameTextBox_TextChanged(object sender, EventArgs e)
