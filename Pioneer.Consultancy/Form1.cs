@@ -205,10 +205,11 @@ namespace Pioneer.Consultancy
                 roles = rolesTextBox.Text,
                 employeeId = Convert.ToInt32(employeeIdTextBox.Text)
             };
-
-            
             EmployeeDataAccessLayer myProjectDal = new EmployeeDataAccessLayer();
-            int result = myProjectDal.TakeProjectDetail(myProject);
+            ServiceReference1.Service1Client sc1 = new ServiceReference1.Service1Client();
+            var result = sc1.TakeProjectDetail(myProject);
+            
+            
             if (result > 0)
             {
                 MessageBox.Show("Done");

@@ -30,7 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PioneerTech.Models">
+    <Reference Include="PioneerTech.Models, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\PioneerTech.Models\bin\Release\PioneerTech.Models.dll</HintPath>
     </Reference>
     <Reference Include="System" />

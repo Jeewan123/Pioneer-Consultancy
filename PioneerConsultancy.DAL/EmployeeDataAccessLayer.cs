@@ -20,7 +20,7 @@ namespace PioneerConsultancy.DAL
 
 
             SqlCommand cmd = new SqlCommand("INSERT INTO EmployeeDetail VALUES(" +
-                                            "'" + myEmployee.firstName + "','" + myEmployee.lastName + "','" + myEmployee.emailId + "'," +
+                                            "'" + myEmployee.firstName + "','" + myEmployee.lastName+ "','" + myEmployee.emailId + "'," +
                                             myEmployee.phoneNumber + "," + myEmployee.alternatePhoneNumber + ",'" + myEmployee.address1 + "','" + myEmployee.address2 +
                                             "','" + myEmployee.homeCountry + "','" + myEmployee.currentCountry + "'," + myEmployee.zipCode + ")", mysqlconnection);
             //Opening Sql Database Connection
